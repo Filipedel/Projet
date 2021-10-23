@@ -51,19 +51,19 @@ void search(node *arbre,int key){
 	
 }
 
-void print(node *tree,int taille){
+void print(node *tree){
     node *tmp=malloc(sizeof(node*));
     tmp=tree;
 	if(tree==NULL){
 		printf("Nothing");
 	}	
-    if(tmp->left) print(tmp->left,taille);
+    if(tmp->left) print(tmp->left);
     	 
     	  if(tree){
     printf("[%d]->%c|",tmp->key,tmp->c);
 }
  
-    if(tmp->right)print(tmp->right,taille);
+    if(tmp->right)print(tmp->right);
     
    
 }
@@ -85,7 +85,7 @@ int main(){
     addNode(&Arbre,1,'t');
     addNode(&Arbre,10,'t');
     addNode(&Arbre,4,'o');
-    print(Arbre,7);
+    print(Arbre);
     search(Arbre,45);
     cleartree(Arbre);
 }
