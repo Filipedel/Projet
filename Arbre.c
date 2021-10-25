@@ -40,20 +40,23 @@ void search(node *arbre,int key){
 	search=arbre;
 	int i=0;
 	while(search){
-
 	if(key==search->key){
-	printf("\nLa cle existe: %d,voici sa valeur: %c et elle est dans l'etage [%d] de l'arbre",search->key,search->c,i);}
+	printf("\nLa cle existe: %d,voici sa valeur: %c ",search->key,search->c);
+	i=0;
+	break;
+	}
 	if(key!=search->key){
-		printf("\nLa cle n'est pas dans l'etage [%d] de l'arbre",i);
+		i=1;
 	}
 	if(key>search->key){
 	search=search->right;}
 	else{
 	 search=search->left;}
-	 i++;
+	 
 	}
-
-	
+	if(i==1){
+		printf("\n il y a pas la clef dans l'arbre");
+	}
 }
 
 void print(node *tree){
@@ -73,16 +76,17 @@ void print(node *tree){
    
 }
 void taille(node *tree){
-	int countleft=1,countright=1;
+	int countleft=0,countright=0;
 	if(tree){
 		do{
 			if(tree->left!=NULL){
-				tree=tree->left;
 				countleft++;
+				tree=tree->left;
+				
 			}
-			else{
+			else{countright++;
 				tree=tree->right;
-				countright++;
+				
 			}
 		}
 		while(tree);
@@ -91,11 +95,42 @@ void taille(node *tree){
 		printf("O");
 	}
 if(countright>countleft){
-	printf("La taille de l'arbre est de %d",countright);
+	printf("La taille de l'arbre est de %d sans compter la racine",countright);
 }
 else{
-	printf("La taille de l'arbre est de %d",countleft);
+	printf("La taille de l'arbre est de %d sans compter la racine",countleft);
 }
+}
+void element(node *tree){
+	node*elem=malloc(sizeof(node*));
+	int countleft=1,countright=1;
+	int somme=1;
+	if(tree){
+		do{
+			elem=tree;
+			if(tree->left!=NULL){
+				tree=tree->left;
+				if(elem!=NULL){
+					countleft++;
+				}
+				
+			}
+			else{
+				tree=tree->right;
+				if(elem!=NULL){
+					countright++;
+				}
+				
+			}
+		}
+		while(tree);
+	}
+	else{
+		printf("\nO");
+	}
+	somme+=countright+countleft;
+	printf("\nIl y a tant d'elements: %d",somme);
+
 }
 void cleartree(node *tree){
 	node *tmp=tree;
@@ -113,11 +148,14 @@ int main(){
     addNode(&Arbre,98,'u');
     addNode(&Arbre,1,'t');
     addNode(&Arbre,10,'t');
-    addNode(&Arbre,4,'o');
+	addNode(&Arbre,4,'ms');
+	addNode(&Arbre,5,'a');
+	addNode(&Arbre,2,'m');
     print(Arbre);
     printf("\n");
     taille(Arbre);
-    search(Arbre,98);
+    element(Arbre);
+    search(Arbre,9);
     cleartree(Arbre);
     return 0;
 }
