@@ -38,14 +38,19 @@ void addNode(node **tree,int key,char b){
 void search(node *arbre,int key){
 	node *search=malloc(sizeof(node*));
 	search=arbre;
-
+	int i=0;
 	while(search){
+
 	if(key==search->key){
-	printf("\nLa cle existe: %d,voici sa valeur: %c",search->key,search->c);}
+	printf("\nLa cle existe: %d,voici sa valeur: %c et elle est dans l'etage [%d] de l'arbre",search->key,search->c,i);}
+	if(key!=search->key){
+		printf("\nLa cle n'est pas dans l'etage [%d] de l'arbre",i);
+	}
 	if(key>search->key){
 	search=search->right;}
 	else{
 	 search=search->left;}
+	 i++;
 	}
 
 	
@@ -67,7 +72,31 @@ void print(node *tree){
     
    
 }
-
+void taille(node *tree){
+	int countleft=0,countright=0;
+	if(tree){
+		do{
+			if(tree->left!=NULL){
+				tree=tree->left;
+				countleft++;
+			}
+			else{
+				tree=tree->right;
+				countright++;
+			}
+		}
+		while(tree);
+	}
+	else{
+		printf("O");
+	}
+if(countright>countleft){
+	printf("La taille de l'arbre est de %d",countright);
+}
+else{
+	printf("La taille de l'arbre est de %d",countleft);
+}
+}
 void cleartree(node *tree){
 	node *tmp=tree;
 	if(!tmp)return;
@@ -86,6 +115,9 @@ int main(){
     addNode(&Arbre,10,'t');
     addNode(&Arbre,4,'o');
     print(Arbre);
-    search(Arbre,45);
+    printf("\n");
+    taille(Arbre);
+    search(Arbre,98);
     cleartree(Arbre);
+    return 0;
 }
