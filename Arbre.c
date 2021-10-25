@@ -73,7 +73,7 @@ void print(node *tree){
    
 }
 void taille(node *tree){
-	int countleft=0,countright=0;
+	int countleft=1,countright=1;
 	if(tree){
 		do{
 			if(tree->left!=NULL){
