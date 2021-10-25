@@ -77,6 +77,9 @@ void print(node *tree){
 }
 void taille(node *tree){
 	int countleft=0,countright=0;
+	if(tree==NULL){
+		printf("Pas de taille");
+	}
 	if(tree){
 		do{
 			if(tree->left!=NULL){
@@ -90,21 +93,22 @@ void taille(node *tree){
 			}
 		}
 		while(tree);
-	}
-	else{
-		printf("O");
-	}
-if(countright>countleft){
+		if(countright>countleft){
 	printf("La taille de l'arbre est de %d sans compter la racine",countright);
 }
 else{
 	printf("La taille de l'arbre est de %d sans compter la racine",countleft);
 }
+	}
+
 }
 void element(node *tree){
 	node*elem=malloc(sizeof(node*));
 	int countleft=1,countright=1;
 	int somme=1;
+	if(tree==NULL){
+		printf("\nil y a pas d'element");
+	}
 	if(tree){
 		do{
 			elem=tree;
@@ -124,12 +128,9 @@ void element(node *tree){
 			}
 		}
 		while(tree);
+		somme+=countright+countleft;
+		printf("\nIl y a tant d'element:%d",somme);
 	}
-	else{
-		printf("\nO");
-	}
-	somme+=countright+countleft;
-	printf("\nIl y a tant d'elements: %d",somme);
 
 }
 void cleartree(node *tree){
@@ -142,7 +143,7 @@ void cleartree(node *tree){
 }
 int main(){
     node *Arbre=NULL;
-    addNode(&Arbre,45,'s');
+   addNode(&Arbre,45,'s');
     addNode(&Arbre,65,'a');
     addNode(&Arbre,25,'l');
     addNode(&Arbre,98,'u');
@@ -151,7 +152,7 @@ int main(){
 	addNode(&Arbre,4,'ms');
 	addNode(&Arbre,5,'a');
 	addNode(&Arbre,2,'m');
-    print(Arbre);
+   print(Arbre);
     printf("\n");
     taille(Arbre);
     element(Arbre);
