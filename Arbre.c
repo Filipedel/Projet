@@ -1,4 +1,3 @@
-
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -8,6 +7,7 @@ typedef struct node{
     struct node *left;
    struct node *right;
 }node;
+
 
 void addNode(node **tree,int key,char b){
     node *TmpNode;
@@ -34,6 +34,27 @@ void addNode(node **tree,int key,char b){
     else{
         *tree=elem;
     }
+}
+//if you want the height of the tree,you take the max between tree->left and right.
+int max(unsigned a,unsigned b){
+	return (a>b)? a : b ;
+}
+int height(node *arbre){
+	if(arbre==NULL){
+		return 0;
+	}
+	else{
+		return 1+max(height(arbre->left),height(arbre->right));
+	}
+}
+//Shows how elements have the tree..
+int element(node *arbre){
+	if(arbre==NULL){
+		return 0;
+	}
+	else{
+		return 1+(element(arbre->left))+(element(arbre->right));
+	}
 }
 
 void search(node *arbre,int key){
@@ -78,7 +99,9 @@ void print(node *tree){
 }
 
 
+
 void cleartree(node *tree){
+
 	node *tmp=tree;
 	if(!tmp)return;
 	if(tmp->right)cleartree(tmp->right);
@@ -87,20 +110,23 @@ void cleartree(node *tree){
 	tree=NULL;
 }
 int main(){
-    node *Arbre=NULL;
+    node*Arbre=NULL;
    addNode(&Arbre,45,'s');
-    addNode(&Arbre,65,'a');
+   addNode(&Arbre,65,'a');
     addNode(&Arbre,25,'l');
     addNode(&Arbre,98,'u');
-    addNode(&Arbre,1,'t');
+   addNode(&Arbre,1,'t');
     addNode(&Arbre,10,'t');
 	addNode(&Arbre,4,'s');
 	addNode(&Arbre,5,'a');
 	addNode(&Arbre,2,'m');
+	addNode(&Arbre,212,'v');
 
 	
    print(Arbre);
+printf("\n Voici la hauteur de l'arbre: %d m",height(Arbre));
     printf("\n");
+    printf("\n Il y a %d element(s)",element(Arbre));
     search(Arbre,9);
     cleartree(Arbre);
     return 0;
