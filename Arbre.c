@@ -93,14 +93,15 @@ else{
 				countleft++;
 				tree=tree->left;
 			}
-	else{countright++;
+	else{                   countright++;
 				tree=tree->right;
 			}
 		}
-		if(tree==NULL){
-			countright++;
+		if(tree->left==NULL){
 			countleft++;
 		}
+		else{
+			countright++;}
 	}
 		while(tree);
 		if(countright>countleft){
