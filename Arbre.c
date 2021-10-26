@@ -1,3 +1,4 @@
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -77,62 +78,40 @@ void print(node *tree){
 }
 void taille(node *tree){
 	int countleft=0,countright=0;
-	if(tree==NULL){
+	if(!tree){
 		printf("Pas de taille");
 	}
-	if(tree){
-		do{
-			if(tree->left!=NULL){
+else{
+		if(tree->left==NULL&&tree->right==NULL)
+		 {printf("La taille est de 0");
+		 return;
+		 }
+	do{
+	if(tree!=NULL){
+
+		if(tree->left!=NULL){
 				countleft++;
 				tree=tree->left;
-				
 			}
-			else{countright++;
+	else{countright++;
 				tree=tree->right;
-				
 			}
 		}
+		if(tree==NULL){
+			countright++;
+			countleft++;
+		}
+	}
 		while(tree);
 		if(countright>countleft){
 	printf("La taille de l'arbre est de %d sans compter la racine",countright);
 }
-else{
+if(countleft>countright){
 	printf("La taille de l'arbre est de %d sans compter la racine",countleft);
 }
 	}
-
 }
-void element(node *tree){
-	node*elem=malloc(sizeof(node*));
-	int countleft=1,countright=1;
-	int somme=1;
-	if(tree==NULL){
-		printf("\nil y a pas d'element");
-	}
-	if(tree){
-		do{
-			elem=tree;
-			if(tree->left!=NULL){
-				tree=tree->left;
-				if(elem!=NULL){
-					countleft++;
-				}
-				
-			}
-			else{
-				tree=tree->right;
-				if(elem!=NULL){
-					countright++;
-				}
-				
-			}
-		}
-		while(tree);
-		somme+=countright+countleft;
-		printf("\nIl y a tant d'element:%d",somme);
-	}
 
-}
 void cleartree(node *tree){
 	node *tmp=tree;
 	if(!tmp)return;
@@ -149,13 +128,15 @@ int main(){
     addNode(&Arbre,98,'u');
     addNode(&Arbre,1,'t');
     addNode(&Arbre,10,'t');
-	addNode(&Arbre,4,'ms');
+	addNode(&Arbre,4,'s');
 	addNode(&Arbre,5,'a');
 	addNode(&Arbre,2,'m');
+
+	
    print(Arbre);
     printf("\n");
     taille(Arbre);
-    element(Arbre);
+    printf("\n");
     search(Arbre,9);
     cleartree(Arbre);
     return 0;
