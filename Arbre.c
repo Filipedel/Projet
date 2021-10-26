@@ -77,7 +77,7 @@ void print(node *tree){
    
 }
 void taille(node *tree){
-	int countleft=0,countright=0;
+	int countleft=1,countright=1;
 	if(!tree){
 		printf("Pas de taille");
 	}
@@ -97,11 +97,7 @@ else{
 				tree=tree->right;
 			}
 		}
-		if(tree->left==NULL){
-			countleft++;
-		}
-		else{
-			countright++;}
+		
 	}
 		while(tree);
 		if(countright>countleft){
