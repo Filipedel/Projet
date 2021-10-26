@@ -76,38 +76,7 @@ void print(node *tree){
     
    
 }
-void taille(node *tree){
-	int countleft=1,countright=1;
-	if(!tree){
-		printf("Pas de taille");
-	}
-else{
-		if(tree->left==NULL&&tree->right==NULL)
-		 {printf("La taille est de 0");
-		 return;
-		 }
-	do{
-	if(tree!=NULL){
 
-		if(tree->left!=NULL){
-				countleft++;
-				tree=tree->left;
-			}
-	else{                   countright++;
-				tree=tree->right;
-			}
-		}
-		
-	}
-		while(tree);
-		if(countright>countleft){
-	printf("La taille de l'arbre est de %d sans compter la racine",countright);
-}
-if(countleft>countright){
-	printf("La taille de l'arbre est de %d sans compter la racine",countleft);
-}
-	}
-}
 
 void cleartree(node *tree){
 	node *tmp=tree;
@@ -131,8 +100,6 @@ int main(){
 
 	
    print(Arbre);
-    printf("\n");
-    taille(Arbre);
     printf("\n");
     search(Arbre,9);
     cleartree(Arbre);
