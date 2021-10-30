@@ -1,16 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Hash.h"
+#include <string.h>
+
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main() {
-hash *h=init(5);
+	int i;
+hash *h=init(3);
+ajout(2,h);
 ajout(1,h);
 ajout(3,h);
-ajout(3,h);
-
-int i;
-for( i=0;i<5;i++){
-	printf("%d\n",h->tab[i]);
-}
+ajout(4,h);
+print(h);
+fre(h);
+return 0;
 }
