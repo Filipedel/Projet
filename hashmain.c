@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "Hash.h"
@@ -11,7 +12,9 @@ hash *h=init(3);
 ajout(2,h);
 ajout(1,h);
 ajout(3,h);
-ajout(4,h);
+ajout(9,h);
+ajout(22,h);
+ajout(24,h);
 print(h);
 fre(h);
 return 0;
