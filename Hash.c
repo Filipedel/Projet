@@ -28,20 +28,31 @@ void ajout(int key,hash *h){
 	if(key1>(h->taille/2)){
 		h->taille=ta(h);
 		h->tab=cop(h);
+			while(h->tab[key1]!=0&&key1<h->taille){
+		key1++;
 	}
+	h->tab[key1]==e->k;
+	}
+	else{
 	while(h->tab[key1]!=0&&key1<h->taille){
 		key1++;
 	}
 	h->tab[key1]==e->k;
 	}
 }
+}
 int ta(hash*h){
-	return h->taille*2;
+	return h->taille*5;
 }
 int* cop(hash* h){
 	int j,i,taille=ta(h);
-int *tab=(int*)calloc(taille,sizeof(int*));
-for(j=0;j<taille;j++){
+	int *tab;
+	for(j=0;j<taille;j++){
+	if(j==0){
+		for(i=0;i<taille;i++){
+			tab=(int*)calloc(taille,sizeof(int));
+			}
+		}
 	tab[j]=h->tab[j];
 }
 return tab;
@@ -59,3 +70,5 @@ void fre(hash *h){
 	}
 	free(h);
 }
+
+
