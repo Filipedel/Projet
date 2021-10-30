@@ -16,4 +16,5 @@ void ajout(int key,hash *h);
 int ta(hash*h);
 int * cop(hash*h);
 void print(hash *h);
+void search(hash*h,int key);
 void fre(hash*h);
