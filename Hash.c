@@ -1,4 +1,4 @@
-##include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "Hash.h"
 #include<string.h>
@@ -7,9 +7,9 @@
 hash*init(int taille){
 	int i;
 	hash*h;
-	h=(hash*)calloc(taille,sizeof(hash));
+	h=(hash*)malloc(sizeof(hash)*taille);
+	h->tab=(int*)calloc(h->taille,sizeof(int));
 	h->taille=taille;
-	h->tab=(int*)calloc(taille,sizeof(int));
 	return h;
 }
 
@@ -30,11 +30,12 @@ void ajout(int key,hash *h){
 	(h)->tab[key1]=e->k;
 	return;
 }
-	if(h->tab[key1]!=0&&key1<h->taille) {
+	if(h->tab[key1]!=0){
+	while(h->tab[key1]!=0&&key1<h->taille) {
 		key1++;
 	}
 	h->tab[key1]=e->k;
-	
+}
 }
 
 int ta(hash*h){
@@ -71,8 +72,5 @@ void fre(hash *h){
 	}
 	free(h);
 }
-
-
-
 
 
