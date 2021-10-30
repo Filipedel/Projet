@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 typedef struct element{
 	int k;
 }element;
@@ -12,4 +13,7 @@ int *tab;
 hash *init(int taille);
 int fonctionhash(int key,int taille);
 void ajout(int key,hash *h);
-
+int ta(hash*h);
+int * cop(hash*h);
+void print(hash *h);
+void fre(hash*h);
