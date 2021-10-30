@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Hash.h"
-
+//not finish yet
 
 hash*init(int taille){
 	hash*h=malloc(sizeof(hash*));
