@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "Hash.h"
@@ -5,65 +6,76 @@
 
 
 hash*init(int taille){
-	int i;
 	hash*h;
 	h=(hash*)malloc(sizeof(hash)*taille);
-	h->tab=(int*)calloc(h->taille,sizeof(int));
+	h->tab=(char*)calloc(h->taille,sizeof(char));
 	h->taille=taille;
 	return h;
 }
+element *initi(char key,int value){
+	element*e;
+	e=(element*)malloc(sizeof(element));
+	e->key=value;
+	e->k=key;
+	return e;
+}
 
 
-int fonctionhash(int key,int taille){
+int fonctionhash(int  key,int taille){
 	int l=key%taille;
 	return l;
 }
-void ajout(int key,hash *h){
-	element *e=malloc(sizeof(element*));
-	e->k=key;
-	int key1=fonctionhash(key,h->taille);
-	if(key1>(h->taille/2)){
+void ajout(element*e,hash *h){
+	int key1=fonctionhash(e->key,h->taille);
+
+	if((h)->tab[key1]==0){
+			if(key1>(h->taille/2)){
 		h->taille=ta(h);
 		h->tab=cop(h);
 	}
-	if((h)->tab[key1]==0){
 	(h)->tab[key1]=e->k;
 	return;
 }
 	if(h->tab[key1]!=0){
+
 	while(h->tab[key1]!=0&&key1<h->taille) {
+			if(key1>(h->taille/2)){
+		h->taille=ta(h);
+		h->tab=cop(h);
+	}
 		key1++;
 	}
+
 	h->tab[key1]=e->k;
 }
 }
 
 int ta(hash*h){
-	return h->taille*4;
+	return h->taille*3;
 }
-int* cop(hash* h){
+char* cop(hash* h){
 	int j,i,taille=ta(h);
-	int *tab;
-	tab=(int*)calloc(taille,sizeof(int));
+	char *tab;
+	tab=(char*)calloc(taille,sizeof(char));
 	for(j=0;j<taille;j++){
 	tab[j]=h->tab[j];
 }
 return tab;
 }
 
-void search(hash*h,int key){
+void search(hash*h,element*e){
 	int i;
 	for(i=0;i<h->taille;i++){
-		if(key==h->tab[i]){
-			printf("La cle existe:%d dans l'indice:[%d]\n",h->tab[i],i);
+		if(e->k==h->tab[i]){
+			printf("La cle existe:%c et sa valeur correspondante est:[%d],dans l'indice [%d]'\n",h->tab[i],e->key,i);
 		}
 	}
 }
 void print(hash *h){
 	int i;
 	for(i=0;i<h->taille;i++){
-		printf("[%d]->%d|\n",i,h->tab[i]);
-	}
+		printf("[%d]->%c|\n",i,h->tab[i]);
+}
 }
 void fre(hash *h){
 	int i;
