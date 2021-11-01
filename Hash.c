@@ -67,7 +67,8 @@ void search(hash*h,element*e){
 	int i;
 	for(i=0;i<h->taille;i++){
 		if(e->k==h->tab[i]){
-			printf("La cle existe:%c et sa valeur correspondante est:[%d],dans l'indice [%d]'\n",h->tab[i],e->key,i);
+			printf("La cle existe:%c et sa valeur correspondante est:[%d]\n",h->tab[i],e->key);
+			return;
 		}
 	}
 }
